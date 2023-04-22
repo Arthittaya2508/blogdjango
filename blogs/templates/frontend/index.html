@@ -1,0 +1,36 @@
+{% extends "frontend/layout.html" %}
+
+{% block content %}
+
+<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+    <div class="page-wrapper">
+        <div class="blog-top clearfix">
+            <h4 class="pull-left">เมนูทั้งหมด <a href="#"><i class="fa fa-rss"></i></a></h4>
+        </div><!-- end blog-top -->
+
+        <div class="blog-list clearfix">
+            {% for blog in blogs%}
+            <div class="blog-box row">
+                <div class="col-md-4">
+                    <div class="post-media">
+                        <a href="#" title="">
+                            <img src="{{blog.Image.url}} " alt="" class="img-fluid">
+                            <div class="hovereffect"></div>
+                        </a>
+                    </div><!-- end media -->
+                </div><!-- end col -->
+
+                <div class="blog-meta big-meta col-md-8">
+                    <h4><a href="{%url 'blogDetail' blog.id%}" title="">{{blog.Name}}</a></h4>
+                    <p>{{blog.Description}}</p>
+                    <small class="firstsmall"><a class="bg-orange" href="#" title="">{{blog.Category}}</a></small>
+                    <small><a href="#" title="">{{blog.Created}}</a></small>
+                    <small><a href="#" title="">by {{blog.Writer}}</a></small>
+                    <small><a href="#" title=""><i class="fa fa-eye"></i> {{blog.View}}</a></small>
+                </div><!-- end meta -->
+            </div><!-- end blog-box -->
+            {% endfor %}
+        </div><!-- end blog-list -->
+    </div><!-- end page-wrapper -->
+    
+{% endblock %}
